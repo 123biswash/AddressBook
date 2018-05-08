@@ -33,11 +33,12 @@ public class Main{
 			System.out.println("Enter the phone number : ");
 			j.setPhone(obj.nextInt());
 			x.addEntry(j);
+			loop=1;
 		}
 		else if(option==2){
 						
 					Scanner obj= new Scanner(System.in);
-					System.out.println("Enter the name to be deleted : ");
+					System.out.println("Enter the phone number of entry to be deleted : ");
 					int num=obj.nextInt();
 					x.deleteEntry(num);
 			}
