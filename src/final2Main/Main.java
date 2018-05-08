@@ -2,153 +2,113 @@ package final2Main;
 import java.util.*;
 
 public class Main{
-	 static Node head; 
-	 class Node {
-	        Person data;
-	        Node next;
-	        Node(Person d)  { data = d;  next=null; } // Constructor
-	    
-	}
-	    
-	public class Person
-	{
-	    String fname;
-	    String lname;
-	    String streetAddress;
-	    String city;
-	    String state;
-	    int zip;
-	    String phone;
-	}
 	
 	public static void main(String[] args)
     {
-    	String fname, lname, streetAddress, city, state, phone;
-    	int zip;
+	myList x = new myList();
+	int loop=0;
+	do {
+		
 	System.out.println("Welcome to Your Address Book");
-	System.out.println("Press 1 to Add entry.\tPress 2 to Delete entry.\tPress 3 to print. \tPress 4 to edit");
+	System.out.println("Press 1 to Add entry.\nPress 2 to Delete entry.\nPress 3 to Print Address. \nPress 4 to edit. \nPress 5 to sort entries by zipcode \n Press 0 to exit.");
 	int option;
-
 	System.out.println("Enter your option : ");
     	Scanner in_stream = new Scanner(System.in);
 	    option=in_stream.nextInt();
-		if(option ==1){
+		if(option == 1){
 			Person j = new Person();
 			Scanner obj = new Scanner(System.in);
 			System.out.println("Enter the first name : ");
-			j.fname=obj.nextLine();
+			j.setFname(obj.nextLine());
 			System.out.println("Enter the last name : ");
-			j.lname=obj.nextLine();
+			j.setLname(obj.nextLine());
 			System.out.println("Enter the streetAddress : ");
-			j.streetAddress=obj.nextLine();
+			j.setStreetAddress(obj.nextLine());
+			System.out.println("Enter the city : ");
+			j.setCity(obj.nextLine());
 			System.out.println("Enter the state : ");
-			j.state=obj.nextLine();
+			j.setState(obj.nextLine());
 			System.out.println("Enter the zip : ");
-			j.zip=obj.nextInt();
+			j.setZip(obj.nextInt());
 			System.out.println("Enter the phone number : ");
-			j.phone=obj.nextLine();
-			addEntry(j);
-			
+			j.setPhone(obj.nextInt());
+			x.addEntry(j);
 		}
 		else if(option==2){
 						
 					Scanner obj= new Scanner(System.in);
 					System.out.println("Enter the name to be deleted : ");
-					phone=obj.nextLine();
-					deleteEntry(phone);
+					int num=obj.nextInt();
+					x.deleteEntry(num);
 			}
-//		else if(option==3){
-//				Scanner obj= new Scanner(System.in);
-//				System.out.println("Enter the phone number to search for corresponding address: ");
-//				name = obj.nextLine();
-//				number=object.getNumber(phone);
-//				if(number.equals(null)){
-//					System.out.println("ERROR! The name entered is not found");
-//				}
-//				else{
-//					System.out.println("The number is : " + number);
-//				}
-//			}
-//		else if(option==4){
-//				Scanner obj= new Scanner(System.in);
-//				System.out.println("Enter the name update : ");
-//				name=obj.nextLine();
-//				System.out.println("Enter the number to be updated : ");
-//				number=obj.nextLine();
-//				object.changeEntry(fname, phone);						
-//			}
-		else{
-			System.out.println("Wrong option entered");
-		}
-    		
-        
- 
-    }
-
-    public static void addEntry(Person k){
-
-        /* 1. Allocate the Node &
-           2. Put in the data
-           3. Set next as null */
-//    		Person k = new Person();
-//    		k.fname = firstName;
-//    		k.lname = lastName;
-//    		k.streetAddress = streetAddress;
-//    		k.city=city;
-//    		k.state=state;
-//    		k.zip=zip;
-//    		k.phone=phone;
-    		
-        Node new_node = new Node(k);
-     
-        /* 4. If the Linked List is empty, then make the
-               new node as head */
-        if (head == null)
-        {
-            head = new Node(k);
-            return;
-        }
-     
-        /* 4. This new node is going to be the last node, so
-             make next of it as null */
-        new_node.next = null;
-     
-        /* 5. Else traverse till the last node */
-        Node last = head; 
-        while (last.next != null)
-            last = last.next;
-     
-        /* 6. Change the next of last node */
-        last.next = new_node;
-        return;
-	}
-    
-    public void deleteEntry(String phone)
-    {
-        // Store head node
-        Node temp = head, prev = null;
- 
-        // If head node itself holds the key to be deleted
-        if (temp != null && temp.data.phone == phone)
-        {
-            head = temp.next; // Changed head
-            return;
-        }
- 
-        // Search for the key to be deleted, keep track of the
-        // previous node as we need to change temp.next
-        while (temp != null && temp.data.phone != phone)
-        {
-            prev = temp;
-            temp = temp.next;
-        }    
- 
-        // If key was not present in linked list
-        if (temp == null) return;
- 
-        // Unlink the node from linked list
-        prev.next = temp.next;
-    }
-    
+		else if(option==3){
+				Scanner obj= new Scanner(System.in);
+				System.out.println("Enter the phone number to search for corresponding address: ");
+				int num = obj.nextInt();
+				x.printEntry(num);
+			}
+		else if(option==4){
+				Scanner obj= new Scanner(System.in);
+				Person newP = new Person();
+				System.out.println("Enter the phone number of the addressBook you want to update : ");
+				int num=obj.nextInt();
+				if (x.findEntry(num)==true) {
+					
+					int option1;
+					System.out.println("Press 1 to edit first name.\nPress 2 to edit last name.\nPress 3 to edit street address. \nPress 4 to edit city.\nPress 5 to edit state.\nPress 6 to edit zip.\nPress 7 to edit phone\n Press 8 to return to main menu \n(If editing multiple elements, please do it one by one)");
+					option1=in_stream.nextInt();
+					if(option1==1) {
+						System.out.println("Enter the first name");
+						String fname=obj.nextLine();
+						newP.setFname(fname);
+						x.editEntry(newP);
+					}else if(option1==2) {
+						System.out.println("Enter the last name");
+						String lname=obj.nextLine();
+						newP.setLname(lname);
+						x.editEntry(newP);
+					}else if(option1==3) {
+						System.out.println("Enter the street address");
+						String streetAddress=obj.nextLine();
+						newP.setStreetAddress(streetAddress);
+						x.editEntry(newP);
+					}else if(option1==4) {
+						System.out.println("Enter the city");
+						String city=obj.nextLine();
+						newP.setCity(city);
+						x.editEntry(newP);
+					}else if (option1==5) {
+						System.out.println("Enter the state");
+						String state=obj.nextLine();
+						newP.setState(state);
+						x.editEntry(newP);
+					}else if(option1==6) {
+						System.out.println("Enter the zip");
+						int zip=obj.nextInt();
+						newP.setZip(zip);
+						x.editEntry(newP);
+					}else if(option1==7) {
+						System.out.println("Enter the phone number");
+						int number=obj.nextInt();
+						newP.setPhone(number);
+						x.editEntry(newP);
+					}else {
+						loop=1;
+					}
+				}else {
+					System.out.println("entry not found");
+				}
+		}else if(option==5){
+			x.sortEntryByZip();	
+			
+		}else if(option==0){
+			return;
+		}else{
+				System.out.println("Wrong option entered");
+			}
+	  }while( loop == 1);
 	
+	}
 }
+
+
