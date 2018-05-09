@@ -1,4 +1,4 @@
-package final2Main;
+package main;
 
 public class Node {
 	

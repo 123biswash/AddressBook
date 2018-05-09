@@ -1,4 +1,4 @@
-package final2Main;
+package main;
 import java.util.*;
 
 public class Main{
@@ -6,9 +6,9 @@ public class Main{
 	public static void main(String[] args)
     {
 	myList x = new myList();
-	int loop=0;
+	
 	do {
-		
+	int loop=0;
 	System.out.println("Welcome to Your Address Book");
 	System.out.println("Press 1 to Add entry.\nPress 2 to Delete entry.\nPress 3 to Print Address. \nPress 4 to edit. \nPress 5 to sort entries by zipcode \n Press 0 to exit.");
 	int option;
