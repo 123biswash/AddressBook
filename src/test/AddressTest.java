@@ -7,9 +7,12 @@ import org.junit.Test;
 
 class AddressTest {
 	 myList lstTest = new myList();
+	 Person pOne= new Person();
+	 Person pTwo= new Person();
+	 Person pThree= new Person();
 	 		@Before
 		    public void init() {
-				Person pOne= new Person();
+				
 				pOne.setFname("o");
 				pOne.setLname("o");
 				pOne.setStreetAddress("o");
@@ -18,7 +21,7 @@ class AddressTest {
 				pOne.setZip(1);
 				pOne.setPhone(1);
 		
-				Person pTwo= new Person();
+				
 				pTwo.setFname("t");
 				pTwo.setLname("t");
 				pTwo.setStreetAddress("t");
@@ -27,7 +30,7 @@ class AddressTest {
 				pTwo.setZip(2);
 				pTwo.setPhone(2);
 				
-				Person pThree= new Person();
+				
 				pThree.setFname("th");
 				pThree.setLname("th");
 				pThree.setStreetAddress("th");
@@ -47,13 +50,13 @@ class AddressTest {
 		    
 		    @Test
 		    public void printEntry() {
-		    		lstTest.deleteEntry(2);
+		    		lstTest.printEntry(2);
 		        assertTrue(lstTest.findEntry(2));
 		    }
 		    
 		    @Test
 		    public void editEntry() {
-		    		lstTest.deleteEntry(2);	
+		    		lstTest.editEntry(pTwo);	
 		        assertTrue(lstTest.findEntry(2));
 		    }
 	
