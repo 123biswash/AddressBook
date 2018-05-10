@@ -67,67 +67,57 @@ public class Main{
 			}
 		
 		else if(option==4){
-				Scanner obj= new Scanner(System.in);
+				Scanner userin= new Scanner(System.in);
 				Person newP = new Person();
 				System.out.println("Enter the phone number of the addressBook you want to update : ");
-				int num=obj.nextInt();
+				int num=userin.nextInt();
 				if (x.findEntry(num)==true) {
 					
-					int option1;
-					System.out.println("Press 1 to edit first name.\nPress 2 to edit last name.\nPress 3 to edit street address. \nPress 4 to edit city.\nPress 5 to edit state.\nPress 6 to edit zip.\nPress 7 to edit phone\n Press 8 to return to main menu \n(If editing multiple elements, please do it one by one)");
-					option1=in_stream.nextInt();
-					if(option1==1) {
-						System.out.println("Enter the first name");
-						String fname=obj.nextLine();
+					
+						System.out.println("Enter the first name\n");
+						String fname=userin.next();
 						newP.setFname(fname);
-						x.editEntry(newP);
-					}else if(option1==2) {
-						System.out.println("Enter the last name");
-						String lname=obj.nextLine();
+						
+						System.out.println("Enter the last name\n");
+						String lname=userin.next();
 						newP.setLname(lname);
-						x.editEntry(newP);
-					}else if(option1==3) {
-						System.out.println("Enter the street address");
-						String streetAddress=obj.nextLine();
+						
+						System.out.println("Enter the street address\n");
+						String streetAddress=userin.next();
 						newP.setStreetAddress(streetAddress);
-						x.editEntry(newP);
-					}else if(option1==4) {
-						System.out.println("Enter the city");
-						String city=obj.nextLine();
+						
+						System.out.println("Enter the city\n");
+						String city=userin.next();
 						newP.setCity(city);
-						x.editEntry(newP);
-					}else if (option1==5) {
-						System.out.println("Enter the state");
-						String state=obj.nextLine();
+						
+						System.out.println("Enter the state\n");
+						String state=userin.next();
 						newP.setState(state);
-						x.editEntry(newP);
-					}else if(option1==6) {
-						System.out.println("Enter the zip");
-						while (!obj.hasNextInt())
+						
+						System.out.println("Enter the zip\n");
+						while (!userin.hasNextInt())
 								{
-								    obj.next();
+								userin.next();
 								    System.err.print("That wasn't an int number. Try again: ");
 								}
-						int zip = obj.nextInt();
+						int zip = userin.nextInt();
 						newP.setZip(zip);
-						x.editEntry(newP);
-					}else if(option1==7) {
-						System.out.println("Enter the phone number");
-						while (!obj.hasNextInt())
+						
+						System.out.println("Enter the phone number\n");
+						while (!userin.hasNextInt())
 						{
-						    obj.next();
+							userin.next();
 						    System.err.print("That wasn't an int number. Try again: ");
 						}
-						int number = obj.nextInt();
-						newP.setZip(number);
+						int number = userin.nextInt();
+						newP.setPhone(number);
+						
 						x.editEntry(newP);
+						
 					}else {
-						loop=1;
-					}
-				}else {
 					System.out.println("entry not found");
-				}
-				loop=1;
+					}
+					loop=1;
 		}else if(option==5){
 			x.sortEntryByZip();	
 			loop=1;

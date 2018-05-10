@@ -91,8 +91,8 @@ public class AddressTest1 {
 		        lstTest.deleteEntry(2);
 		        assertEquals( 3, lstTest.size());
 		    }
+		    
 		    @Test
-			
 		    public void sortEntryByZip() {
 		        lstTest.sortEntryByZip();
 		        assertTrue(lstTest.checkForIfSortedByZip());
