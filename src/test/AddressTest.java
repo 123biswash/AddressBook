@@ -46,13 +46,15 @@ class AddressTest {
 		    }
 		    
 		    @Test
-		    public void printEntry(int phone) {
-		        assertTrue(lstTest.findEntry(phone));
+		    public void printEntry() {
+		    		lstTest.deleteEntry(2);
+		        assertTrue(lstTest.findEntry(2));
 		    }
 		    
 		    @Test
-		    public void editEntry(int phone) {
-		        assertTrue(lstTest.findEntry(phone));
+		    public void editEntry() {
+		    		lstTest.deleteEntry(2);	
+		        assertTrue(lstTest.findEntry(2));
 		    }
 	
 		    @Test
