@@ -15,38 +15,40 @@ public class Main{
 	System.out.println("Enter your option : ");
     	Scanner in_stream = new Scanner(System.in);
 	    option=in_stream.nextInt();
+	    
 		if(option == 1){
 			Person j = new Person();
-			Scanner obj = new Scanner(System.in);
+			Scanner k = new Scanner(System.in);
 			System.out.println("Enter the first name : ");
-			j.setFname(obj.nextLine());
+			j.setFname(k.nextLine());
 			System.out.println("Enter the last name : ");
-			j.setLname(obj.nextLine());
+			j.setLname(k.nextLine());
 			System.out.println("Enter the streetAddress : ");
-			j.setStreetAddress(obj.nextLine());
+			j.setStreetAddress(k.nextLine());
 			System.out.println("Enter the city : ");
-			j.setCity(obj.nextLine());
+			j.setCity(k.nextLine());
 			System.out.println("Enter the state : ");
-			j.setState(obj.nextLine());
+			j.setState(k.nextLine());
 			System.out.println("Enter the zip : ");
-			j.setZip(obj.nextInt());
+			j.setZip(k.nextInt());
 			System.out.println("Enter the phone number : ");
-			j.setPhone(obj.nextInt());
+			j.setPhone(k.nextInt());
 			x.addEntry(j);
 			loop=1;
 		}
 		else if(option==2){
 						
-					Scanner obj= new Scanner(System.in);
+					Scanner k= new Scanner(System.in);
 					System.out.println("Enter the phone number of entry to be deleted : ");
-					int num=obj.nextInt();
+					int num;
+					num = k.nextInt();
 					x.deleteEntry(num);
 					loop=1;
 			}
 		else if(option==3){
-				Scanner obj= new Scanner(System.in);
+				Scanner k= new Scanner(System.in);
 				System.out.println("Enter the phone number to search for corresponding address: ");
-				int num = obj.nextInt();
+				int num = k.nextInt();
 				x.printEntry(num);
 				loop=1;
 			}

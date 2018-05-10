@@ -6,7 +6,7 @@ public class Node {
     Node next;
     
     Node(Person k){
-	    	Person data = k;
+	    	 data = k;
     }
 
 }

@@ -2,7 +2,14 @@ package main;
 
 public class Person
 {
-
+	private String fname;
+	private String lname;
+	private String streetAddress;
+	private String city;
+	private String state;
+	private int zip;
+	private int phone;
+	
 public String getFname() {
 	return fname;
 }
@@ -45,11 +52,5 @@ public int getPhone() {
 public void setPhone(int phone) {
 	this.phone = phone;
 }
-private String fname;
-private String lname;
-private String streetAddress;
-private String city;
-private String state;
-private int zip;
-private int phone;
+
 }
