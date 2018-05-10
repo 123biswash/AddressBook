@@ -27,18 +27,22 @@ public class myList{
 		}else if (temp.next == null) {
 			count=1;
 		}else{
+			count=1;
 			while(temp.next!=null) {
 				count+=1;
 				temp=temp.next;
 			}
-			
 		}
 		return count;
 	}
 	
 	public void printEntry(int phone) {
 		Node temp = head;
-		if (temp != null && temp.data.getPhone() == phone)
+		if (temp==null) {
+			System.out.println("no entries found\n\n");
+			return;
+		}
+		if (temp.next == null && temp.data.getPhone() == phone)
         {
             System.out.println(temp.data.getFname());
             System.out.println(temp.data.getLname());
@@ -63,30 +67,39 @@ public class myList{
 			}
 			temp=temp.next;
 		}
+		System.out.println("no entries found \n\n");
 	}
     public void addEntry(Person k){
-    		
-        Node new_node = new Node(k);
-        /* 4. If the Linked List is empty, then make the
-               new node as head */
-        if (head == null)
-        {
-            head = new Node(k);
-            return;
+    		Node current = head;
+    		if (head==null) {
+    			head=new Node(k);
+    			head.next=null;
+    			return;
+    		}
+        while (current.next != null) {
+            current = current.next;
         }
-     
-        /* 4. This new node is going to be the last node, so
-             make next of it as null */
-        new_node.next = null;
-     
-        /* 5. Else traverse till the last node */
-        Node last = head; 
-        while (last.next != null)
-            last = last.next;
-     
-        /* 6. Change the next of last node */
-        last.next = new_node;
+        current.next = new Node(k);
+        
+        current = current.next;
+        current.next=null;
         return;
+//        Node new_node = new Node(k);
+//       
+//        if (head == null)
+//        {
+//            head = new_node;
+//            head.next=null;
+//            return;
+//        }
+//     
+//        Node last = head; 
+//        while (last.next != null) {
+//            last = last.next;
+//        }
+//        last.next = new_node;
+//        new_node.next=null;
+//        return;
 	}
     
     public void deleteEntry(int phone)
