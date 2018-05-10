@@ -1,7 +1,7 @@
 package main;
 
 
-class myList{
+public class myList{
 	Node head = null;
 	public boolean findEntry (int phone) {
 		Node temp = head;
@@ -17,6 +17,25 @@ class myList{
 		return false;
 		
 	}
+	
+	public int size() {
+		int count=0;
+		Node temp = head;
+		
+		if (temp == null) {
+			count=0;
+		}else if (temp.next == null) {
+			count=1;
+		}else{
+			while(temp.next!=null) {
+				count+=1;
+				temp=temp.next;
+			}
+			
+		}
+		return count;
+	}
+	
 	public void printEntry(int phone) {
 		Node temp = head;
 		if (temp != null && temp.data.getPhone() == phone)
@@ -79,6 +98,7 @@ class myList{
         if (temp != null && temp.data.getPhone() == phone)
         {
             head = temp.next; // Changed head
+            System.out.println("deletion successful");
             return;
         }
  
@@ -95,6 +115,7 @@ class myList{
  
         // Unlink the node from linked list
         prev.next = temp.next;
+        
     }
     
     public void editEntry(Person newP){
@@ -135,12 +156,58 @@ class myList{
     			temp1=temp1.next;
     			temp2=temp2.next;
     		}
+    		Node temp=head;
+    		if (temp == null) {
+    			return;
+    		}else if (temp.next == null) {
+    			printEntry(temp.data.getPhone());
+    		}else{
+    			while(temp.next!=null) {
+    				printEntry(temp.data.getPhone());
+    				temp=temp.next;
+    			}
+    			return;
+    		}
+    }
+    
+    public boolean checkForIfSortedByZip() {
+    	Node temp=head;
+		if (temp == null) {
+			return true;
+		}else if (temp.next == null) {
+			if (temp.data.getZip() <= temp.next.data.getZip()) {
+				return true;
+			}
+		}else{
+			while(temp.next!=null) {
+				if (temp.data.getZip() <= temp.next.data.getZip()) {
+					return true;
+				}
+				temp=temp.next;
+			}
+		  }
+		return false;
     }
     
     public void swap(Node temp1, Node min) {
     		Node x=temp1;
     		temp1=min;
     		min=x;
+    }
+    
+    public void deleteAll() {
+    Node temp=head;
+    	if (temp == null) {
+			return;
+		}else if (temp.next == null) {
+			deleteEntry(temp.data.getPhone());
+		}else{
+			while(temp.next!=null) {
+				deleteEntry(temp.data.getPhone());
+				temp=temp.next;
+			}
+			return;
+		}
     }
     	
 }

@@ -10,7 +10,7 @@ public class Main{
 	do {
 	loop=0;
 	System.out.println("Welcome to Your Address Book");
-	System.out.println("Press 1 to Add entry.\nPress 2 to Delete entry.\nPress 3 to Print Address. \nPress 4 to edit. \nPress 5 to sort entries by zipcode \n Press 0 to exit.");
+	System.out.println("Press 1 to Add entry.\nPress 2 to Delete entry.\nPress 3 to Print Address. \nPress 4 to edit. \nPress 5 to sort entries by zipcode \nPress 6 to delete the whole address book \nPress 7 to find the number of addresses (linked list size) \nPress 0 to exit.");
 	int option;
 	System.out.println("Enter your option : ");
     	Scanner in_stream = new Scanner(System.in);
@@ -30,9 +30,21 @@ public class Main{
 			System.out.println("Enter the state : ");
 			j.setState(k.nextLine());
 			System.out.println("Enter the zip : ");
-			j.setZip(k.nextInt());
+			while (!k.hasNextInt())
+			{
+			    k.next();
+			    System.err.print("That wasn't an int number. Try again: ");
+			}
+			int zip = k.nextInt();
+			j.setZip(zip);
 			System.out.println("Enter the phone number : ");
-			j.setPhone(k.nextInt());
+			while (!k.hasNextInt())
+			{
+			    k.next();
+			    System.err.print("That wasn't an int number. Try again: ");
+			}
+			int num = k.nextInt();
+			j.setPhone(num);
 			x.addEntry(j);
 			loop=1;
 		}
@@ -89,13 +101,23 @@ public class Main{
 						x.editEntry(newP);
 					}else if(option1==6) {
 						System.out.println("Enter the zip");
-						int zip=obj.nextInt();
+						while (!obj.hasNextInt())
+								{
+								    obj.next();
+								    System.err.print("That wasn't an int number. Try again: ");
+								}
+						int zip = obj.nextInt();
 						newP.setZip(zip);
 						x.editEntry(newP);
 					}else if(option1==7) {
 						System.out.println("Enter the phone number");
-						int number=obj.nextInt();
-						newP.setPhone(number);
+						while (!obj.hasNextInt())
+						{
+						    obj.next();
+						    System.err.print("That wasn't an int number. Try again: ");
+						}
+						int number = obj.nextInt();
+						newP.setZip(number);
 						x.editEntry(newP);
 					}else {
 						loop=1;
@@ -107,12 +129,19 @@ public class Main{
 		}else if(option==5){
 			x.sortEntryByZip();	
 			loop=1;
+		}else if(option==6){
+			x.deleteAll();	
+			loop=1;
+		}else if(option==7){
+			System.out.println("Number of addresses in address book: " + x.size() + "\n\n");
+			loop=1;
 		}else if(option==0){
 			return;
 		}else{
 				System.out.println("Wrong option entered");
 				loop=1;
 		}
+		
 	  }while(loop == 1);
 	
 	}
