@@ -48,8 +48,8 @@ public class Main{
 			x.addEntry(j);
 			loop=1;
 		}
-		else if(option==2){
-						
+		
+		else if(option==2){	
 					Scanner k= new Scanner(System.in);
 					System.out.println("Enter the phone number of entry to be deleted : ");
 					int num;
@@ -57,6 +57,7 @@ public class Main{
 					x.deleteEntry(num);
 					loop=1;
 			}
+		
 		else if(option==3){
 				Scanner k= new Scanner(System.in);
 				System.out.println("Enter the phone number to search for corresponding address: ");
@@ -64,6 +65,7 @@ public class Main{
 				x.printEntry(num);
 				loop=1;
 			}
+		
 		else if(option==4){
 				Scanner obj= new Scanner(System.in);
 				Person newP = new Person();

@@ -27,10 +27,12 @@ public class myList{
 		}else if (temp.next == null) {
 			count=1;
 		}else{
-			count=1;
 			while(temp.next!=null) {
 				count+=1;
 				temp=temp.next;
+			}
+			if (temp.next == null) {
+				count+=1;
 			}
 		}
 		return count;
@@ -67,40 +69,56 @@ public class myList{
 			}
 			temp=temp.next;
 		}
+		if (temp.next == null && temp.data.getPhone() == phone)
+        {
+            System.out.println(temp.data.getFname());
+            System.out.println(temp.data.getLname());
+            System.out.println(temp.data.getStreetAddress());
+            System.out.println(temp.data.getCity());
+            System.out.println(temp.data.getState());
+            System.out.println(temp.data.getZip());
+            System.out.println(temp.data.getPhone());
+            return;
+        }
 		System.out.println("no entries found \n\n");
 	}
-    public void addEntry(Person k){
-    		Node current = head;
-    		if (head==null) {
-    			head=new Node(k);
-    			head.next=null;
+	
+    public void addEntry(Person j){
+    			Node new_node = new Node(j);
+
+    			if (head == null){
+    			head = new_node;
     			return;
-    		}
-        while (current.next != null) {
-            current = current.next;
-        }
-        current.next = new Node(k);
-        
-        current = current.next;
-        current.next=null;
-        return;
-//        Node new_node = new Node(k);
-//       
-//        if (head == null)
-//        {
-//            head = new_node;
-//            head.next=null;
-//            return;
+    			}
+
+    			Node last = head;
+    			while (last.next != null){
+    			last = last.next;
+    			}
+
+    			last.next = new_node;
+    	
+//    		Node new_node = new Node(j);
+//    		Node current = head;
+//    		if (current==null) {
+//    			current=new_node;
+//    			current.next=null;
+//    			return;
+//    		}else if(current.next==null) {
+//    			current.next=new_node;
+//    			current=current.next;
+//    			current.next=null;
+//    			
+//    		}else {
+//    			while (current.next != null) {
+//            current = current.next;
 //        }
-//     
-//        Node last = head; 
-//        while (last.next != null) {
-//            last = last.next;
-//        }
-//        last.next = new_node;
-//        new_node.next=null;
+//        current.next = new_node;
+//        current = current.next;
+//        current.next=null;
 //        return;
-	}
+//    		}
+    }
     
     public void deleteEntry(int phone)
     {
@@ -121,7 +139,8 @@ public class myList{
         {
             prev = temp;
             temp = temp.next;
-        }    
+        }
+        
  
         // If key was not present in linked list
         if (temp == null) return;
@@ -169,16 +188,17 @@ public class myList{
     			temp1=temp1.next;
     			temp2=temp2.next;
     		}
-    		Node temp=head;
-    		if (temp == null) {
+    		Node curr=head;
+    		if (curr == null) {
     			return;
-    		}else if (temp.next == null) {
-    			printEntry(temp.data.getPhone());
+    		}else if (curr.next == null) {
+    			printEntry(curr.data.getPhone());
     		}else{
-    			while(temp.next!=null) {
-    				printEntry(temp.data.getPhone());
-    				temp=temp.next;
+    			while(curr.next!=null) {
+    				printEntry(curr.data.getPhone());
+    				curr=curr.next;
     			}
+    			printEntry(curr.data.getPhone());
     			return;
     		}
     }
@@ -218,6 +238,9 @@ public class myList{
 			while(temp.next!=null) {
 				deleteEntry(temp.data.getPhone());
 				temp=temp.next;
+			}
+			if (temp.next == null) {
+				deleteEntry(temp.data.getPhone());
 			}
 			return;
 		}

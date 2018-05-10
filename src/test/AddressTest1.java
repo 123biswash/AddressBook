@@ -1,11 +1,23 @@
+/**
+ * 
+ */
 package test;
 import main.*;
 import static org.junit.Assert.*;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-class AddressTest {
+import main.Person;
+import main.myList;
+
+/**
+ * @author bis
+ *
+ */
+public class AddressTest1 {
+
 	 myList lstTest = new myList();
 	 Person pOne= new Person();
 	 Person pTwo= new Person();
