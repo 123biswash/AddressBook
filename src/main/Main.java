@@ -6,9 +6,9 @@ public class Main{
 	public static void main(String[] args)
     {
 	myList x = new myList();
-	
+	int loop;
 	do {
-	int loop=0;
+	loop=0;
 	System.out.println("Welcome to Your Address Book");
 	System.out.println("Press 1 to Add entry.\nPress 2 to Delete entry.\nPress 3 to Print Address. \nPress 4 to edit. \nPress 5 to sort entries by zipcode \n Press 0 to exit.");
 	int option;
@@ -41,12 +41,14 @@ public class Main{
 					System.out.println("Enter the phone number of entry to be deleted : ");
 					int num=obj.nextInt();
 					x.deleteEntry(num);
+					loop=1;
 			}
 		else if(option==3){
 				Scanner obj= new Scanner(System.in);
 				System.out.println("Enter the phone number to search for corresponding address: ");
 				int num = obj.nextInt();
 				x.printEntry(num);
+				loop=1;
 			}
 		else if(option==4){
 				Scanner obj= new Scanner(System.in);
@@ -99,15 +101,17 @@ public class Main{
 				}else {
 					System.out.println("entry not found");
 				}
+				loop=1;
 		}else if(option==5){
 			x.sortEntryByZip();	
-			
+			loop=1;
 		}else if(option==0){
 			return;
 		}else{
 				System.out.println("Wrong option entered");
-			}
-	  }while( loop == 1);
+				loop=1;
+		}
+	  }while(loop == 1);
 	
 	}
 }

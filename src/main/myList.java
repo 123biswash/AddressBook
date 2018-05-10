@@ -1,6 +1,5 @@
 package main;
 
-import javafx.scene.Node;
 
 class myList{
 	Node head = null;
@@ -102,19 +101,19 @@ class myList{
     		Node temp=head;
     		while (temp.next!=null) {
 	    		if (temp.data.getPhone()==newP.getPhone()) {
-				if (newP.getFname()!=null) {
+				if (newP.getFname()!= null) {
 					temp.data.setFname(newP.getFname());
-				}else if(newP.getLname()!=null) {
+				}else if(newP.getLname()!= null) {
 					temp.data.setLname(newP.getLname());
-				}else if(newP.getStreetAddress()!=null) {
+				}else if(newP.getStreetAddress()!= null) {
 					temp.data.setStreetAddress(newP.getStreetAddress());
-				}else if(newP.getCity()!=null) {
+				}else if(newP.getCity()!= null) {
 					temp.data.setCity(newP.getCity());
-				}else if(newP.getState()!=null) {
+				}else if(newP.getState()!= null) {
 					temp.data.setState(newP.getState());
-				}else if(newP.getZip()!=null) {
+				}else if(newP.getZip() != 0) {
 					temp.data.setZip(newP.getZip());
-				}else if(newP.getPhone()!=null) {
+				}else if(newP.getPhone() != 0) {
 					temp.data.setPhone(newP.getPhone());
 				}	
 			}
